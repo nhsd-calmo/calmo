@@ -1,4 +1,4 @@
-# Calmo
+# Calmo 👌
 
 A functional app that uses the VR experience to reduce anxiety and pain during procedures.
 
@@ -89,3 +89,6 @@ The effectiveness of virtual reality distraction for pain reduction: a systemati
 * Scaling for patients of all ages (for example use for paediatrics, adolescents, adults and geriatrics)
 
 <small>Terms and Conditions: This app is beta software and hereunder is still in the testing phase. It is provided on an “as is" and “as available” basis. A primary source of this beta testing is to obtain feedback on software performance and the identification of defects. Users are advised to use caution and not to rely in any way on the correct functioning or performance of the beta software and/or accompanying materials.</small>
+
+
+

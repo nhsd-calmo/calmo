@@ -4,36 +4,39 @@ using UnityEngine;
 
 public class V_Pattern : MonoBehaviour {
 
+	public GameObject layerZeroObj;
 	public GameObject layerOneObj;
 	public GameObject layerTwoObj;
 	public GameObject layerThreeObj;
 	public GameObject layerFourObj;
 	public GameObject textObj;
 	public float intervalTime;
+	
 	public int state;
 
 	// Use this for initialization
 	void Start () {
-		
 		StartCoroutine(waiter());
-
 		intervalTime = 4f;//for kicks
 		state = 0;
-		//V_Text textComp = textObj.GetComponent<V_Text>();
-		//textComp.setText("Calmo helps to synchronize breathing by displaying an easy to follow pattern.");
-		
 	}
 
 	IEnumerator waiter()
 	{
 		V_Text textComp = textObj.GetComponent<V_Text>();
-		AudioSource sound = GetComponent<AudioSource>();
+		AudioSource sound = GetComponentInChildren<AudioSource>();
 		//Rotate 90 deg
 		textComp.setText("Hello welcome to Calmo.");
+		
+		iTween.ScaleTo(this.layerZeroObj, iTween.Hash("x", 1, "y", 1 , "easetype","easeInOutExpo","time",2));
+		iTween.ScaleTo(this.layerOneObj, iTween.Hash("x", 1.2, "y", 1.2, "easetype","easeInOutExpo","time",2.1));
+		iTween.ScaleTo(this.layerTwoObj, iTween.Hash("x", 1.2, "y", 1.2, "easetype","easeInOutExpo","time",2.1));
+		iTween.ScaleTo(this.layerThreeObj, iTween.Hash("x", 1.2, "y", 1.2, "easetype","easeInOutExpo","time",2.1));
+		iTween.ScaleTo(this.layerFourObj, iTween.Hash("x", 1.2, "y", 1.2, "easetype","easeInOutExpo","time",2.1));
 	
 		yield return new WaitForSeconds(5);
 
-		textComp.setText("Calmo helps to synchronize breathing by displaying an easy to follow pattern.");
+		textComp.setText("Calmo helps to synchronize \n breathing by displaying an easy to follow pattern.");
 
 		yield return new WaitForSeconds(5);
 
@@ -87,74 +90,37 @@ public class V_Pattern : MonoBehaviour {
 		
 	}
 
-	void test() {
-		// V_Text textComp = textObj.GetComponent<V_Text>();
-		//  Wait (5, () => {
-        //      textComp.setText("Hello welcome to Calmo.");
-        //  });
-		// Wait (10, () => {
-        //      textComp.setText("Calmo helps to synchronize breathing by displaying an easy to follow pattern.");
-        // });
-		// Wait (20, () => {
-        //      textComp.setText("When the pattern expands breathe in and hold until it goes down.");
-        // });
-		// Wait (30, () => {
-        //      textComp.setText("Breathe In now.");
-        // });
-		// Wait (40, () => {
-        //      textComp.setText("Hold.");
-        // });
-        // yield WaitForSeconds(5);
-		// textComp.setText();
-		// yield WaitForSeconds(10);
-		// textComp.setText();
-		// yield WaitForSeconds(10);
-		// textComp.setText("Breathe In now.");
-		// yield WaitForSeconds(4);
-		// textComp.setText("Hold.");
-		// yield WaitForSeconds(4);
-		// textComp.setText("And then breathe out.");
-		// yield WaitForSeconds(4);
-		// textComp.setText("Keep it out.");
-		// yield WaitForSeconds(4);
-		// textComp.setText("Breathe in.");
-    }
-
 	public void startBreathing(){
+
+		V_Layer layerZero = layerZeroObj.GetComponent<V_Layer>();
 		V_Layer layerOne = layerOneObj.GetComponent<V_Layer>();
 		V_Layer layerTwo = layerTwoObj.GetComponent<V_Layer>();
 		V_Layer layerThree = layerThreeObj.GetComponent<V_Layer>();
 		V_Layer layerFour = layerFourObj.GetComponent<V_Layer>();
+
+		layerZero.animate(state);
+		layerOne.animate(state);
+		layerTwo.animate(state);
+		layerThree.animate(state);
+		layerFour.animate(state);
+
 		switch (state){
 			case 0:
 			//breathIn
-			iTween.ScaleTo(this.gameObject, iTween.Hash("x", 0.003f, "y", 0.003f , "easetype","easeInOutExpo","time",intervalTime));
-			layerOne.animate(2.12f,intervalTime -0.1f);
-			layerTwo.animate(2.2f,intervalTime - 0.2f);
-			layerThree.animate(3f,intervalTime - 0.1f);
-			layerFour.animate(4f,intervalTime - 0.6f);
-
+			//iTween.ScaleTo(this.gameObject, iTween.Hash("x", 0.003f, "y", 0.003f , "easetype","easeInOutExpo","time",intervalTime));
 			state++;
 			break;
 			case 1:
 			//breathInHold
-
 			state++;
 			break;
 			case 2:
 			//breathOut
-			iTween.ScaleTo(this.gameObject, iTween.Hash("x", 0.002f, "y",0.002f , "easetype","easeInOutExpo","time",intervalTime));
-			layerOne.animate(1f,intervalTime);
-			layerTwo.animate(1f,intervalTime);
-			layerThree.animate(1f,intervalTime);
-			layerFour.animate(1f,intervalTime - 0.4f);
-			
-
+			//iTween.ScaleTo(this.gameObject, iTween.Hash("x", 0.002f, "y",0.002f , "easetype","easeInOutExpo","time",intervalTime));
 			state++;
 			break;
 			case 3:
 			//breathOutHold
-
 			state = 0;
 			break;
 
