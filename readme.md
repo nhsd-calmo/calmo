@@ -1,4 +1,4 @@
-<img src="Calmo_logo.png" alt="logo" width= "100px"/>
+<img src="Assets/textures/Calmo_logo.png" alt="logo" width= "100px"/>
 
 Calmo is a functional app that uses the VR experience to reduce anxiety and pain during procedures. Designed and developed during [NHS Hack Day](http://nhshackday.com/index.html) 2018, Cardiff.
 
