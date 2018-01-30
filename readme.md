@@ -6,10 +6,12 @@ Calmo is a functional app that uses the VR experience to reduce anxiety and pain
 
 You will need:
 
-* A smartphone
+* A smartphone (only android is supported at this time)
 * A viewer (eg: [these viewers](https://vr.google.com/intl/en_uk/cardboard/get-cardboard/))
 
-Then download the Calmo app on your phone for free at the Apple App Store or Google Play Store.
+You can then use the supplied calmo.apk to test out the app.
+
+"We have future plans to publish to both Apple App Store and Google Play Store for free."
 
 ### The Problem
 
